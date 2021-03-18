@@ -1,8 +1,6 @@
 package ru.skillbranch.kotlinexample
 
 import androidx.annotation.VisibleForTesting
-import ru.skillbranch.kotlinexample.extentions.isValidPhone
-import ru.skillbranch.kotlinexample.extentions.trimPhone
 
 object UserHolder {
 
@@ -61,4 +59,7 @@ object UserHolder {
         map.clear()
     }
 
+    fun String.isValidPhone() =
+        trimPhone().startsWith("+") && trimPhone().length == 12
+    fun String.trimPhone() = this.replace("[^+\\d]".toRegex(), replacement = "")
 }
